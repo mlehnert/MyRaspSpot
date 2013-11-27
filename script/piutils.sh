@@ -1,5 +1,6 @@
 #!/bin/sh
 # Utils for my RaspSpot
+# Testbranch
 
 connectssid=`iwgetid $2|cut -d: -f 2|sed "s/\"//g"`
 myssid=`cat /etc/hostapd/hostapd.conf|grep ssid=|head -1|cut -d= -f 2`
