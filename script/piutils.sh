@@ -62,12 +62,11 @@ case $1 in
 	encrypted=`echo $2|cut -d"(" -f 2|cut -d")" -f 1`
 	echo "network={\n ssid=\"$wanwlan\"" > $wpaconf
 	if [ "$encrypted" = "encrypted" ] ; then
-		echo -n " psk=\"" >> $wpaconf
-		cat $dumptxt >> $wpaconf
-		echo "\"" >> $wpaconf
+		echo -n " psk=$3\n" >> $wpaconf
 	fi
 	echo " }" >> $wpaconf
-	rm $dumptxt
+	echo -n "alert(\\\"SSID=$wanwlan\\\");"
+#	echo -n "<a href=\"index.php\" onClick=\"return confirm('Set $wanwlan');\">los</a>\n"
 	;;
 	*)
 		echo "PIUTILS -Params"
