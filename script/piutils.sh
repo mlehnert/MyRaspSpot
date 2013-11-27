@@ -1,6 +1,6 @@
 #!/bin/sh
 # Utils for my RaspSpot
-# Testbranch
+# last modified 27.11.2013
 
 connectssid=`iwgetid $2|cut -d: -f 2|sed "s/\"//g"`
 myssid=`cat /etc/hostapd/hostapd.conf|grep ssid=|head -1|cut -d= -f 2`
@@ -66,8 +66,7 @@ case $1 in
 		echo -n " psk=$3\n" >> $wpaconf
 	fi
 	echo " }" >> $wpaconf
-	echo -n "alert(\\\"SSID=$wanwlan\\\");"
-#	echo -n "<a href=\"index.php\" onClick=\"return confirm('Set $wanwlan');\">los</a>\n"
+	echo -n "<script language=\"JavaScript\">\n alert(\"connect to $wanwlan\");\n</script>"
 	;;
 	*)
 		echo "PIUTILS -Params"
