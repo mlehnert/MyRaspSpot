@@ -37,20 +37,15 @@ header("Pragma: no-cache");
 	<div class="links">
 		<a href="index.php">Home</a><a id="pressed">Connection</a><a href="preferences.php">Preferences</a> </div>
 </div>
-<script language="JavaScript">
 <?php
 $wanwkey = htmlspecialchars($_POST["wanwlkey"]);
 $wanwlan = htmlspecialchars($_POST["wlan"]);
 
 if(isset($wanwlan) && !empty($wanwlan))
 {
-exec('sudo /usr/bin/piutils.sh setwanwlan "'.$wanwlan.'" \'"'.$wanwkey.'"\'');
+passthru('sudo /usr/bin/piutils.sh setwanwlan "'.$wanwlan.'" \'"'.$wanwkey.'"\'');
 }
-#echo "<script language="JavaScript">";
-#echo "alert("SSID=ssi");";
-#echo "</script>";
 ?>
-</script>
 
 <div id="content">
 <form method="post">
